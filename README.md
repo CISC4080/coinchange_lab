@@ -3,15 +3,21 @@
 In this lab, we solve different versions of the CoinChange problems, making use of recursive methods to explore all combinations. 
 
 
-## Preparation: 
-     Download the following starter code: coin_change.cpp
+## Download starter code
+
+From your terminal (mac or WSL/Ubunto) window, you can use the following command to download it:
+```
+git clone https://github.com/CISC4080/coinchange_lab.git
+```
 
 ## Requirements:
 
-1. Implement the  
-3. Implement an unlimited coin change problem, where each coin can be used for an unlimited number of times. 
+1. Implement the function **CoinChangeK** that solves K-of-a-kind, answering the existence question.
+2. Implement the function **UnlimitedCoinChange** that solves the unlimited variation of coin-change problem, finding the optimal solution.
+3. Test your code using the testcases given in **main.cpp**. 
 
-  Implement this function recursively, based upon the logic learnt in class (i.e., use decision tree to guide your design of the recursive algorithm). 
+Note: Implement these two functions recursively, based upon the logic learnt in class (i.e., use decision tree to guide your design of the 
+recursive algorithm). 
 
 
 ## Deadlines and Submission
