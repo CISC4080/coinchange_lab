@@ -12,7 +12,8 @@ void PrintVector (const vector<int> & v){
 
 }
 
-/* check if we can use values in L[left...right] to make a sum of value, and find
+/* Find optimal solution to one-of-a-kind coin change problem. 
+ check if we can use values in L[left...right] to make a sum of value, and find
 the best solution, i.e., smallest set of coins tht make this value
  @param L, first, last: specify a sub-vector where coins/values are chosen from
  @param value: the sum/value we want to make
@@ -23,30 +24,19 @@ the best solution, i.e., smallest set of coins tht make this value
 */
 bool CoinChange (vector<int> & L, int first, int last, int value, vector<int> & used)
 {
-
-    if (value==0)
-    {
+    //Three base cases 
+    if (value==0){
  	used.clear();
-
 	return true;
-    }
-
-   if (first>last) //no more coins to use
-   {
+    } else if (first>last){ //no more coins to use
 	used.clear();
-
 	return false;
-   }
-
-   if (value<0)
-   {
+   } else if (value<0) {
 	used.clear();
-
 	return false;
    }
 
    //general case below
-
    vector<int> used1;
    bool ret1= CoinChange (L, first, last-1, value-L[last], used1);
    if (ret1) 
@@ -74,20 +64,38 @@ bool CoinChange (vector<int> & L, int first, int last, int value, vector<int> & 
 	used.clear();
 	return false;
    }
-
-  
-
 } 
 
+/* Find whether there is solution to an K-of-a-kind coin change problem. 
+ check if we can use values in L[left...right] to make a sum of value, and find
+the best solution, i.e., smallest set of coins tht make this value
+ @param L, first, last: specify a sub-vector where coins/values are chosen from
+ @param value: the sum/value we want to make
+ @pre-condition: all parameters are initialized, L[] and value are non-negative
+ @post-condition: return true/false depending on the checking result, if return true,
+   used vector contains coins that make up the value, with the minimul # of elements from 
+   L [first...last]
+*/
 bool CoinChangeK (const vector<int> & coins, int first, int last, int value, int K)
 {
-   return true;
+   //Todo by you ... 
+
 }
 
+/* Find whether there is solution to an unlimited coin change problem. 
+ check if we can use values in L[left...right] to make a sum of value, and find
+the best solution, i.e., smallest set of coins tht make this value
+ @param L, first, last: specify a sub-vector where coins/values are chosen from
+ @param value: the sum/value we want to make
+ @pre-condition: all parameters are initialized, L[] and value are non-negative
+ @post-condition: return true/false depending on the checking result, if return true,
+   bestSolution vector contains coins that make up the value with the minimul # of elements from 
+   L [first...last]
+*/
 bool UnlimitedCoinChange (const vector<int> & coins, int value, vector<int>& bestSolution)
 {
-   
-   return true;
+   //Todo by you ...
+   //return true;
 }
 
 int main()
@@ -96,52 +104,58 @@ int main()
    vector<int> used;
 
    vector<int> values{4, 6,15, 18, 30, 41}; //use this to test
-   
 
-   //This part demo the CoinChange function: optimization problem
-/*
-   for (auto v: values) {
-   //Todo: replace CoinChange with your CoinChangeUnlimited function... 
-   	if (CoinChange (coins, 0, coins.size()-1, v, used))
-   	{
-		cout <<"value="<<v <<" True\n";
-		//display used vector
-        	for (int i=0;i<used.size();i++)
-			cout <<used[i]<<" ";
-        	cout<<endl;
-   	}
-   	else 
-		cout <<"Value=" << v<<" False"<<endl;
-   }
-*/
-
-   //Test CoinChangeK
   cout <<"Enter coinchangek or unlimited to test the corresponding function:";
   string command;
-
   cin >> command;
 
-  if (command=="coinchangek"){  
-  	//we cannot make 20 using 2 or fewer coins
-  	if (CoinChangeK (coins, 0, coins.size()-1, 20, 2)!=false || 
-      		CoinChangeK (coins, 0, coins.size()-1, 5, 1)!=true)
+  if (command=="oneofakind"){
+         for (auto v: values) {
+  	  	if (CoinChange (coins, 0, coins.size()-1, v, used))
+   		{
+			cout <<"value="<<v <<" True\n";
+			//display used vector
+        		for (int i=0;i<used.size();i++)
+				cout <<used[i]<<" ";
+        		cout<<endl;
+   		}
+   		else 
+			cout <<"Value=" << v<<" False"<<endl;
+   	} 
+  } else if (command=="kofakind"){  
+  	//Test of K-of-a-kind
+	//make 20, k=1 ==> cannot be done 
+  	if (CoinChangeK (coins, 0, coins.size()-1, 20, 1)!=false)
   	{
-		cout <<"fail coinchangek tests\n";
+		cout <<"fail coinchangek test case #1\n";
        		return 1; //faild coinchangeK test 
   	}
 	else{
-		cout <<"pass coinchangek tests\n";
+		cout <<"pass coinchangek test case #1\n";
 		return 0; //pass coinchangeK test
 	}
+
+	  //Make 9, k=3 ==> can be done 
+	if (CoinChangeK (coins, 0, coins.size()-1, 9, 3)!=true)
+  	{
+		cout <<"fail coinchangek test case #2\n";
+       		return 1; //faild coinchangeK test 
+  	}
+	else{
+		cout <<"pass coinchangek test case $2";
+		return 0; //pass coinchangeK test
+	}  
   } else if (command=="unlimited"){
    	//Test UnlimitedCoinChange 
 	vector<int> bestSolution;
 
+	//Make 1? ==> impossible
    	if (UnlimitedCoinChange (coins, 1,bestSolution)!=false) {
       		cout <<"Failed UnlimitedCoinChange case 1\n";
 		return 1; //failed unlimited test 
 	}
 
+	//Make 15 ==> yes, best solution is using {5,10} 
    	if (UnlimitedCoinChange (coins, 15, bestSolution)!=true) {
 		cout <<"Failed UnlimitedCoinChange case 2\n";
 		return 1;
@@ -154,7 +168,7 @@ int main()
 
 	}
 
-
+	//Make 30 ==> yes, using {10,10,10} is optimal solution
    	if (UnlimitedCoinChange (coins, 30, bestSolution)!=true) {
 		cout <<"Failed UnlimitedCoinChange case 3\n";
 		return 1;
