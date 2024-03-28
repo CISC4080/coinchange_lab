@@ -5,10 +5,11 @@ In this lab, we solve different versions of the CoinChange problems, making use 
 
 ## Download starter code
 
-From your terminal (mac or WSL/Ubunto) window, you can use the following command to download it:
+If you have installed command **git**, from your terminal (mac or WSL/Ubunto) window, you can use the following command to download it:
 ```
 git clone https://github.com/CISC4080/coinchange_lab.git
 ```
+Otherwise, you can download the starter code as a zip file. 
 
 ## Requirements:
 
