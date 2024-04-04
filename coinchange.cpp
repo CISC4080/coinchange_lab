@@ -67,14 +67,13 @@ bool CoinChange (vector<int> & L, int first, int last, int value, vector<int> & 
 } 
 
 /* Find whether there is solution to an K-of-a-kind coin change problem. 
- check if we can use values in L[left...right] to make a sum of value, and find
+ check if we can use coins in coins[left...right] to make a sum of value, and find
 the best solution, i.e., smallest set of coins tht make this value
- @param L, first, last: specify a sub-vector where coins/values are chosen from
+ @param coins, first, last: specify a sub-vector where coins/values are chosen from
  @param value: the sum/value we want to make
- @pre-condition: all parameters are initialized, L[] and value are non-negative
- @post-condition: return true/false depending on the checking result, if return true,
-   used vector contains coins that make up the value, with the minimul # of elements from 
-   L [first...last]
+ @param K: each coin in coins[first...last] can be used at most K times
+ @pre-condition: all parameters are initialized, coins[] and value are non-negative
+ @post-condition: return true/false depending on the checking result
 */
 bool CoinChangeK (const vector<int> & coins, int first, int last, int value, int K)
 {
@@ -83,14 +82,15 @@ bool CoinChangeK (const vector<int> & coins, int first, int last, int value, int
 }
 
 /* Find whether there is solution to an unlimited coin change problem. 
- check if we can use values in L[left...right] to make a sum of value, and find
+ check if we can use coins to make a sum of value, and find
 the best solution, i.e., smallest set of coins tht make this value
- @param L, first, last: specify a sub-vector where coins/values are chosen from
+ @param coins: specify the coins can be used
  @param value: the sum/value we want to make
- @pre-condition: all parameters are initialized, L[] and value are non-negative
+ @param bestSolution: set by the function to include the coins used. 
+ @pre-condition: all parameters are initialized, coins and value are non-negative
  @post-condition: return true/false depending on the checking result, if return true,
    bestSolution vector contains coins that make up the value with the minimul # of elements from 
-   L [first...last]
+   coins
 */
 bool UnlimitedCoinChange (const vector<int> & coins, int value, vector<int>& bestSolution)
 {
