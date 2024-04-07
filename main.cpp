@@ -1,6 +1,7 @@
 //Compile using g++ -std=c++11
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "coinchange.h"
 using namespace std;
 
