@@ -29,28 +29,41 @@ int main()
 			cout <<"Value=" << v<<" False"<<endl;
    	} 
   } else if (command=="kofakind"){  
-  	//Test of K-of-a-kind
-	//make 20, k=1 ==> cannot be done 
-  	if (CoinChangeK (coins, 0, coins.size()-1, 20, 1)!=false)
-  	{
-		cout <<"fail coinchangek test case #1\n";
-       		return 1; //faild coinchangeK test 
-  	}
-	else{
-		cout <<"pass coinchangek test case #1\n";
-		return 0; //pass coinchangeK test
-	}
+  	 //Test of K-of-a-kind
+        //make 20, k=1 ==> cannot be done
+        if (CoinChangeK (coins, 0, coins.size()-1, 20, 1)!=true)
+        {
+                cout <<"fail coinchangek test case #1\n";
+                return 1; //faild coinchangeK test
+        }
+        else{
+                cout <<"pass coinchangek test case #1\n";
+                return 0; //pass coinchangeK test
+        }
 
-	  //Make 9, k=3 ==> can be done 
-	if (CoinChangeK (coins, 0, coins.size()-1, 9, 3)!=true)
-  	{
-		cout <<"fail coinchangek test case #2\n";
-       		return 1; //faild coinchangeK test 
-  	}
-	else{
-		cout <<"pass coinchangek test case $2";
-		return 0; //pass coinchangeK test
-	}  
+
+          //Make 9, k=3 ==> can be done
+        if (CoinChangeK (coins, 0, coins.size()-1, 9, 2)!=false)
+        {
+                cout <<"fail coinchangek test case #2\n";
+                return 1; //faild coinchangeK test
+        }
+        else{
+                cout <<"pass coinchangek test case $2";
+                return 0; //pass coinchangeK test
+        }
+
+          //Make 9, k=3 ==> can be done
+        if (CoinChangeK (coins, 0, coins.size()-1, 9, 3)!=true)
+        {
+                cout <<"fail coinchangek test case #3\n";
+                return 1; //faild coinchangeK test
+        }
+        else{
+                cout <<"pass coinchangek test case #3";
+                return 0; //pass coinchangeK test
+        }
+
   } else if (command=="unlimited"){
    	//Test UnlimitedCoinChange 
 	vector<int> bestSolution;
