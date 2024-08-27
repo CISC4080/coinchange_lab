@@ -1,4 +1,4 @@
-# Lab3: coinchange_lab
+# Lab4: coinchange_lab
 
 In this lab, we solve different versions of the CoinChange problems, making use of recursive methods to explore all combinations. 
 
